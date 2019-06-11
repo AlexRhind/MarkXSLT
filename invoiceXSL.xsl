@@ -23,26 +23,18 @@
 <!-- Grid wrapper -->
 <div class="boundingGrid">
 
+<!-- <xsl:for-each select = "InvoiceID"> -->
+
 <div class="box1">
 
   <xsl:for-each select="//customer">
     <h2>Customer details</h2>
     <ul>
-      <li>
-        Customer name: <xsl:value-of select="CustomerName"/>
-      </li>
-      <li>
-        Address: <xsl:value-of select="Address"/>
-      </li>
-      <li>
-        City: <xsl:value-of select="City"/>
-      </li>
-      <li>
-        State/Province: <xsl:value-of select="StateProvince"/>
-      </li>
-      <li>
-        Zip: <xsl:value-of select="ZipPostal"/>
-      </li>
+      <li>Customer name: <xsl:value-of select="CustomerName"/></li>
+      <li>Address: <xsl:value-of select="Address"/></li>
+      <li>City: <xsl:value-of select="City"/></li>
+      <li>State/Province: <xsl:value-of select="StateProvince"/></li>
+      <li>Zip: <xsl:value-of select="ZipPostal"/></li>
     </ul>
   </xsl:for-each>
 </div>
@@ -62,16 +54,13 @@
 
    <xsl:for-each select="//order">
 
-<!--format-number(<xsl:value-of select="Tax"/>,"$#,###,###.00")
-<xsl:value-of select="format-number(score, '#,###.00')"/>-->
    <h2>Order details</h2>
         <ul>
           <li>Order ID: <xsl:value-of select="OrderID"/></li>
           <li>Order placed: <xsl:value-of select="OrderDate"/></li>
           <li>Order taken by: <xsl:value-of select="SalesPerson"/></li>
-          <li>Order value excluding tax: <xsl:value-of select='format-number("Tax", "#,###.##")'/>
-        </li>
-          <li>Tax: <xsl:value-of select="Tax"/>
+          <li>Order value excluding tax: $<xsl:value-of select="OrderTotal"/></li>
+          <li>Tax: $<xsl:value-of select="Tax"/>
         </li>
 
 
@@ -116,8 +105,6 @@
 
 <div class="box4">
 
-  <xsl:for-each select="//delivery">
-
     <xsl:for-each select="//delivery">
               <!-- Queries the xs:choice element -->
               <xsl:choose>
@@ -127,7 +114,7 @@
                           <xsl:for-each select="//shipping">
                             <h2>Shipping details</h2>
                                 <ul>
-                                  <li>Shipping company used: <xsl:value-of select="ShipVia"/></li>
+                                  <li>Shipped by: <xsl:value-of select="ShipVia"/></li>
                                   <li>Deliver to: <xsl:value-of select="ShipName"/></li>
                                   <li>Address: <xsl:value-of select="ShipAddress"/></li>
                                   <li>City: <xsl:value-of select="ShipCity"/></li>
@@ -135,7 +122,7 @@
                                   <li>Zip/Postcode: <xsl:value-of select="ShipZIPPostal"/></li>
                                   <li>Country: <xsl:value-of select="ShipCountryRegion"/></li>
                                   <li>Shipped on: <xsl:value-of select="ShippedDate"/></li>
-                                  <li>Fee: <xsl:value-of select="ShippingFee"/></li>
+                                  <li>Fee: $<xsl:value-of select="ShippingFee"/></li>
                                 </ul>
                           </xsl:for-each>
                     </xsl:when>
@@ -156,10 +143,13 @@
 
       </xsl:for-each>
 
-  </xsl:for-each>
 
   <!-- end box4 -->
 </div>
+
+
+<!-- </xsl:for-each> -->
+
 <!-- end grid wrapper -->
 </div>
 
