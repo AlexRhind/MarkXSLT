@@ -8,46 +8,53 @@
 <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
 <!-- HTML page template and root (doc or /) definition -->
+
 <xsl:template match = "dataroot">
+  <html>
+    <head>
+      <title>Invoice Output</title>
+      <link rel="stylesheet" type="text/css" href="invoiceCSS.css" />
+    </head>
+    <body>
 
-<html>
-  <head>
-    <title>Invoice Output</title>
-    <!-- The css goes in the head of the template -->
-    <link rel="stylesheet" type="text/css" href="invoiceCSS.css" />
-</head>
+      <!-- start grid wrapper -->
+      <div class="boundingGrid">
 
-<body>
+      <xsl:apply-templates select = "customerDetails" />
+      <xsl:apply-templates select = "invoiceOrderDetails" />
+      <xsl:apply-templates select = "orderDetails" />
+      <xsl:apply-templates select = "deliveryShipping" />
+
+      <!-- end grid wrapper -->
+      </div>
+
+    </body>
+  </html>
+</xsl:template>
 
 
-<!-- Grid wrapper -->
-<div class="boundingGrid">
 
+
+<xsl:template match = "customerDetails" >
 <div class="box1">
-
+  <!-- for each selects all the tags -->
   <xsl:for-each select="//customer">
     <h2>Customer details</h2>
     <ul>
-      <li>
-        Customer name: <xsl:value-of select="CustomerName"/>
-      </li>
-      <li>
-        Address: <xsl:value-of select="Address"/>
-      </li>
-      <li>
-        City: <xsl:value-of select="City"/>
-      </li>
-      <li>
-        State/Province: <xsl:value-of select="StateProvince"/>
-      </li>
-      <li>
-        Zip: <xsl:value-of select="ZipPostal"/>
-      </li>
+      <!-- value of selects the content of a tag -->
+      <li>Customer name: <xsl:value-of select="CustomerName"/></li>
+      <li>Address: <xsl:value-of select="Address"/></li>
+      <li>City: <xsl:value-of select="City"/></li>
+      <li>State/Province: <xsl:value-of select="StateProvince"/></li>
+      <li>Zip: <xsl:value-of select="ZipPostal"/></li>
     </ul>
   </xsl:for-each>
 </div>
+<!-- end customerDetails template -->
+</xsl:template>
 
 
+<xsl:template match = "invoiceOrderDetails" >
  <div class="box2">
 
     <xsl:for-each select="//InvoiceData">
@@ -82,6 +89,11 @@
 
 </div>
 
+</xsl:template>
+
+
+<xsl:template match = "orderDetails" >
+
 <div class="box3">
 
   <xsl:for-each select="//orderLines">
@@ -89,6 +101,7 @@
     <h2>Order summary</h2>
         <table class="tableHeader">
           <tr>
+              <th>Prod ID</th>
               <th>Product</th>
               <th>Quantity</th>
               <th>Price</th>
@@ -97,11 +110,12 @@
 
           <!-- //product/* -alternative: select all children of the product node in this doc -->
       <xsl:for-each select="product">
-        <xsl:sort select="ProductName" order = "ascending"/>
+        <xsl:sort select="id" order = "ascending" data-type = "number" />
           <tr class="tableRow">
+              <td><xsl:value-of select="id"/></td>
               <td><xsl:value-of select="ProductName"/></td>
               <td><xsl:value-of select="Quantity"/></td>
-              <td>$<xsl:value-of select="UnitPrice"/></td>
+              <td><xsl:value-of select="UnitPrice"/></td>
               <td><xsl:value-of select="Discount"/></td>
           </tr>
       </xsl:for-each>
@@ -112,11 +126,14 @@
 
 </div>
 
+</xsl:template>
 
+
+
+<xsl:template match = "deliveryShipping" >
 
 <div class="box4">
 
-  <xsl:for-each select="//delivery">
 
     <xsl:for-each select="//delivery">
               <!-- Queries the xs:choice element -->
@@ -154,18 +171,10 @@
 
             </xsl:choose>
 
-      </xsl:for-each>
-
   </xsl:for-each>
 
   <!-- end box4 -->
 </div>
-<!-- end grid wrapper -->
-</div>
-
-</body>
-
-</html>
 
 </xsl:template>
 
