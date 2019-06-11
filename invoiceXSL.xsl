@@ -25,6 +25,10 @@
 
 <!-- <xsl:for-each select = "InvoiceID"> -->
 
+<xsl:for-each select="//delivery">
+  <xsl:sort select="author"/>
+
+
 <div class="box1">
 
   <xsl:for-each select="//customer">
