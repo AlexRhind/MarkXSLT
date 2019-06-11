@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/xsl" href="invoiceXSL.xsl"?>
+
+<!-- This file represents the data pile -->
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          generated="2012-10-09T09:32:26"
+          xsi:noNamespaceSchemaLocation="InvoiceData.xsd">
+  <customer>
+    <CustomerName>Company N</CustomerName>
+    <Address>456 14th Street</Address>
+    <City>Denver</City>
+    <StateProvince>CO</StateProvince>
+    <ZipPostal>g2 ujt</ZipPostal>
+    <InvoiceData>
+      <InvoiceID>1</InvoiceID>
+      <InvoiceDate>2010-11-28T00:00:00</InvoiceDate>
+       <order>
+        <OrderID>001</OrderID>
+        <OrderDate>2010-11-25T00:00:00</OrderDate>
+        <SalesPerson>Jan Kotas</SalesPerson>
+        <OrderSubTotal>60.54</OrderSubTotal>
+        <OrderTotal>53.54</OrderTotal>
+        <Tax>3.875</Tax>
+        <orderLines>
+          <product id="001">
+            <ProductName>Chai</ProductName>
+            <Quantity>1</Quantity>
+            <UnitPrice>19.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+          <product id="002">
+            <ProductName>Syrup</ProductName>
+            <Quantity>1</Quantity>
+            <UnitPrice>9.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+          <product id="003">
+            <ProductName>Cajun Seasoning</ProductName>
+            <Quantity>10</Quantity>
+            <UnitPrice>4.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+          <product id="004">
+            <ProductName>Boysenberry Spread</ProductName>
+            <Quantity>5</Quantity>
+            <UnitPrice>6.99</UnitPrice>
+            <Discount>2.00</Discount>
+          </product>
+          <product id="005">
+            <ProductName>Dried Pears</ProductName>
+            <Quantity>9</Quantity>
+            <UnitPrice>9.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+          <product id="006">
+            <ProductName>Chocolate Biscuits Mix</ProductName>
+            <Quantity>7</Quantity>
+            <UnitPrice>8.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+        </orderLines>
+      </order>
+      <delivery>
+      <shipping>
+        <ShipVia>Shipping Company A</ShipVia>
+        <ShipName>Company N</ShipName>
+        <ShipAddress>456 14th Street</ShipAddress>
+        <ShipCity>Denver</ShipCity>
+        <ShipStateProvince>CO</ShipStateProvince>
+        <ShipZIPPostal>99999</ShipZIPPostal>
+        <ShipCountryRegion>USA</ShipCountryRegion>
+        <ShippedDate>2010-11-30T00:00:00</ShippedDate>
+        <ShippingFee>50</ShippingFee>
+      </shipping>
+      </delivery>
+    </InvoiceData>
+  </customer>
+  <customer>
+    <CustomerName>Denver Hotel</CustomerName>
+    <Address>456 Argyle Street</Address>
+    <City>Denver</City>
+    <StateProvince>CO</StateProvince>
+    <ZipPostal>HU90KLP</ZipPostal>
+    <InvoiceData>
+      <InvoiceID>001</InvoiceID>
+      <InvoiceDate>2010-11-28T00:00:00</InvoiceDate>
+      <order>
+        <OrderID>002</OrderID>
+        <OrderDate>2010-11-26T00:00:00</OrderDate>
+        <SalesPerson>Jan Kotas</SalesPerson>
+        <OrderSubTotal>10.5</OrderSubTotal>
+        <OrderTotal>10.375</OrderTotal>
+        <Tax>3.875</Tax>
+        <orderLines>
+          <product id="009">
+            <ProductName>Marmalade</ProductName>
+            <Quantity>1</Quantity>
+            <UnitPrice>10.00</UnitPrice>
+            <Discount>4.00</Discount>
+          </product>
+          <product id="006">
+            <ProductName>Chocolate Biscuits Mix</ProductName>
+            <Quantity>7</Quantity>
+            <UnitPrice>8.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+          <product id="014">
+            <ProductName>Crab Meat</ProductName>
+            <Quantity>3</Quantity>
+            <UnitPrice>2.99</UnitPrice>
+            <Discount>1.00</Discount>
+          </product>
+          <product id="234">
+            <ProductName>Clam Chowder</ProductName>
+            <Quantity>9</Quantity>
+            <UnitPrice>1.99</UnitPrice>
+            <Discount>0.00</Discount>
+          </product>
+          <product id="134">
+            <ProductName>Dried Apples</ProductName>
+            <Quantity>10</Quantity>
+            <UnitPrice>10.99</UnitPrice>
+            <Discount>0.00</Discount>
+          </product>
+        </orderLines>
+      </order>
+      <delivery>
+        <collect>
+          <CollectID>001897</CollectID>
+          <CollectDate>2010-11-29T00:00:00</CollectDate>
+          <CollectName>Mr Sam Smith</CollectName>
+        </collect>
+      </delivery>
+    </InvoiceData>
+  </customer>
+</dataroot>

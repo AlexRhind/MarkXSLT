@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:od="urn:schemas-microsoft-com:officedata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="dataroot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="customer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CustomerName" type="xs:string" />
+              <xs:element name="Address" type="xs:string" />
+              <xs:element name="City" type="xs:string" />
+              <xs:element name="StateProvince" type="xs:string" />
+              <xs:element name="ZipPostal" type="xs:string" />
+              
+              <xs:element name="InvoiceData">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="InvoiceID" type="xs:unsignedByte" />
+                    <xs:element name="InvoiceDate" type="xs:date" />
+
+                    <xs:element name="order">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="OrderID" type="xs:unsignedByte" />
+                          <xs:element name="OrderDate" type="xs:dateTime" />
+                          <xs:element name="SalesPerson" type="xs:string" />
+                          <xs:element name="OrderSubTotal" type="xs:decimal" />
+                          <xs:element name="OrderTotal" type="xs:decimal" />
+                          <xs:element name="Tax" type="xs:decimal" />
+
+                          <xs:element name="orderLines">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="1" maxOccurs="unbounded" name="product">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="ProductName" type="xs:string" />
+                                      <xs:element name="Quantity" type="xs:int" />
+                                      <xs:element name="UnitPrice" type="xs:decimal" />
+                                      <xs:element name="Discount" type="xs:decimal" />
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:int" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:element name="delivery">
+                      <xs:complexType>
+                        <xs:choice>
+                          
+                          <xs:element name="shipping">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="ShipVia" type="xs:string" />
+                                <xs:element name="ShipName" type="xs:string" />
+                                <xs:element name="ShipAddress" type="xs:string" />
+                                <xs:element name="ShipCity" type="xs:string" />
+                                <xs:element name="ShipStateProvince" type="xs:string" />
+                                <xs:element name="ShipZIPPostal" type="xs:unsignedInt" />
+                                <xs:element name="ShipCountryRegion" type="xs:string" />
+                                <xs:element name="ShippedDate" type="xs:date" />
+                                <xs:element name="ShippingFee" type="xs:unsignedByte" />
+                              </xs:all>
+                            </xs:complexType>
+                          </xs:element>
+                          
+                          <xs:element name="collect">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element name="CollectName" type="xs:string" />
+                                <xs:element name="CollectID" type="xs:string" />
+                                <xs:element name="CollectDate" type="xs:date" />
+                              </xs:all>
+                            </xs:complexType>
+                          </xs:element>
+                         </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                   </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="generated" type="xs:dateTime" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
